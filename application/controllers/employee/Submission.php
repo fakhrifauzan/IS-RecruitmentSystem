@@ -10,7 +10,7 @@ class Submission extends CI_Controller {
 
 	public function index()
 	{
-        // $data['data'] = M_Submission::all();
+        $data['data'] = M_Submission::all();
         $data['sidebar'] = 'employee/sidebar';
         $data['content'] = 'employee/submission';
         $this->load->view('layouts/app', $data); 
@@ -52,39 +52,52 @@ class Submission extends CI_Controller {
     public function setVerified($id)
     {
         $submission = M_Submission::find($id);
+        // dd($submission->verified);
         if ($submission) {
-            $submission->verified == 1;
+            if ($submission->verified == 1) {
+                $submission->verified = 0;
+            } else {
+                $submission->verified = 1;
+            }
             $submission->save();
             $this->session->set_flashdata('sukses', 'Submission Berhasil Disimpan');
         } else {
             $this->session->set_flashdata('gagal', 'Submission Tidak Berhasil Disimpan');
         }
-        redirect('manager/submission');
+        redirect('employee/submission');
     }
 
     public function setInReview($id)
     {
         $submission = M_Submission::find($id);
         if ($submission->verified == 1) {
-            $submission->in_review = 1;
+            if ($submission->in_review == 1) {
+                $submission->in_review = 0;
+            } else {
+                $submission->in_review = 1;
+            }
             $submission->save();
             $this->session->set_flashdata('sukses', 'Submission Berhasil Disimpan');
         } else {
             $this->session->set_flashdata('gagal', 'Submission Tidak Berhasil Disimpan');
         }
-        redirect('manager/submission');
+        redirect('employee/submission');
     }
 
     public function setInterview($id)
     {
         $submission = M_Submission::find($id);
         if ($submission->in_review == 1) {
-            $submission->interview = 1;
+            if ($submission->interview == 1) {
+                $submission->interview = 0;
+            } else {
+                $submission->interview = 1;
+            }
             $submission->save();
             $this->session->set_flashdata('sukses', 'Submission Berhasil Disimpan');
         } else {
             $this->session->set_flashdata('gagal', 'Submission Tidak Berhasil Disimpan');
         }
-        redirect('manager/submission');
+        redirect('employee/submission');
     }
 }

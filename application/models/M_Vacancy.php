@@ -20,4 +20,10 @@ class M_Vacancy extends Eloquent
         return $this->belongsTo('M_User', 'id_user', 'id');
     }
 
+    public function submission()
+    {
+        return $this->hasMany('M_Submission', 'id_vacancy', 'id_vacancy');
+    }
+
+
 }

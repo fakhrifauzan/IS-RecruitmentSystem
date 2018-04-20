@@ -59,6 +59,23 @@
 <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
 
 <script type="text/javascript">
+    $().ready(function(){
+        demo.checkFullPageBackgroundImage();
+
+        setTimeout(function(){
+            // after 1000 ms we add the class animated to the login/register card
+            $('.card').removeClass('card-hidden');
+        }, 700)
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        demo.initWizard();
+    });
+</script>
+
+<script type="text/javascript">
     $(document).ready(function() {
 
         $('#datatables').DataTable({
@@ -95,3 +112,4 @@
 
     });
 </script>
+

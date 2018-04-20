@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Landing extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,6 +21,21 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['vacancy'] = M_Vacancy::where('status', 1)->get();
-		$this->load->view('layouts/app', $data);
+		$this->load->view('public/landing', $data);
+	}
+
+	public function show($id)
+    {
+        $data['vacancy'] = M_Vacancy::where('status', 1)->where('id_vacancy',$id)->first();
+        if (!$data['vacancy']) {
+        	redirect(base_url());
+        }
+        $this->load->view('public/vacancy', $data);
+    }
+
+	public function submit()
+	{
+        $data['content'] = 'public/submission';
+		$this->load->view('public/app', $data);
 	}
 }

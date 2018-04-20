@@ -15,15 +15,15 @@ class Submission extends CI_Controller {
 
 	public function create($id_vacancy)
     {
-        $data['sidebar'] = 'public/sidebar';
-        $data['content'] = 'public/submision_create';
-        $this->load->view('layouts/app', $data);
+        $data['vacancy'] = M_Vacancy::where('status', 1)->where('id_vacancy',$id_vacancy)->first();
+        $data['content'] = 'public/submission';
+        $this->load->view('public/app', $data);
     }
 
     public function store()
     {
         if (!$this->input->post()) {
-            redirect('index');
+            redirect(base_url());
         } else {
             //PROFILE
             $this->form_validation->set_rules('username', 'Nama Pengguna', 'required');
@@ -36,7 +36,6 @@ class Submission extends CI_Controller {
 
             //SUBMISSION
             $this->form_validation->set_rules('id_vacancy', 'ID Lowongan', 'required');
-            $this->form_validation->set_rules('resume', 'Berkas', 'required');
             $this->form_validation->set_rules('website', 'Situs Web', '');
             $this->form_validation->set_rules('linkedin', 'Profil LinkedIn', '');
             $this->form_validation->set_rules('github', 'Profil Github', '');
@@ -50,7 +49,7 @@ class Submission extends CI_Controller {
             $this->form_validation->set_rules('hidup', 'Twiter', 'required');
 
             if ($this->form_validation->run() == FALSE) {
-                redirect('index');
+                dd(validation_errors());
             } else {
                 $user = M_User::create([
                     'username' => $this->input->post('username'),
@@ -63,17 +62,18 @@ class Submission extends CI_Controller {
                     'role' => 0,
                 ]);
 
-                if (empty($_FILES['resume']) || !isset($_FILES['resume'])) {
+                if (!empty($_FILES['resume']) || !isset($_FILES['resume'])) {
                     $config['upload_path']      = './assets/resume/';
                     $config['allowed_types']    = 'rar|zip|pdf|docx|doc';
                     $config['max_size']         = 4096;
-                    $config['file_name']        = '['.$this->input->post('id_vacancy').']_RESUME_'.$user->id;
+                    $config['file_name']        = $this->input->post('id_vacancy').'_RESUME_'.$user->id;
                     $config['overwrite']        = TRUE;
 
                     $this->load->library('upload', $config);
 
                     if (!$this->upload->do_upload('resume')) {
-                        dd($error);
+                        $user->delete();
+                        dd($this->upload->display_errors());
                     }
                 }
 
@@ -93,7 +93,7 @@ class Submission extends CI_Controller {
                     'linkedin' => empty($this->input->post('linkedin')) ? NULL : $this->input->post('linkedin'),
                     'github' => empty($this->input->post('github')) ? NULL : $this->input->post('github'),
                     'facebook' => empty($this->input->post('facebook')) ? NULL : $this->input->post('facebook'),
-                    'twitter' => empty($this->input->post('website')) ? NULL : $this->input->post('twitter'),
+                    'twitter' => empty($this->input->post('twitter')) ? NULL : $this->input->post('twitter'),
                     'recommendation' => $this->getRecommendation($questionnaire),
                     'in_review' => 0,
                     'interview' => 0,
@@ -107,7 +107,7 @@ class Submission extends CI_Controller {
                     $user->delete();
                     $this->session->set_flashdata('gagal', 'Submission Tidak Berhasil Disimpan');
                 }
-                redirect('index');
+                redirect(base_url('auth'));
             }
         }
     }

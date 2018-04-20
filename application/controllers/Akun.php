@@ -7,7 +7,7 @@ class Akun extends CI_Controller {
     {
         parent::__construct();
 		if (!$this->session->logged_in){
-			redirect('login');
+			redirect('auth');
 		}
     }
 

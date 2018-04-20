@@ -13,7 +13,7 @@
 <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
 		<li>
-            <a href="#settings">
+            <a href="<?php echo base_url('logout'); ?>">
 				<i class="fa fa-sign-out" aria-hidden="true"></i>
                 <p>Keluar</p>
             </a>

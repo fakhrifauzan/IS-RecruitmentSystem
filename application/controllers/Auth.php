@@ -11,7 +11,8 @@ class Auth extends CI_Controller {
 	public function index()
 	{
         if (!$this->session->has_userdata('logged_in')) {
-            $this->load->view('auth/login'); 
+            $data['content'] = 'public/login';
+            $this->load->view('public/app', $data); 
         } else {
             if ($this->session->userdata('role') == 0) { // Applicants
                 redirect('applicants/dashboard');
