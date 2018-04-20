@@ -13,7 +13,7 @@ class M_Submission extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['id_user', 'id_vacancy', 'resume', 'website', 'linkedin', 'github', 'facebook', 'twitter', 'recommendation', 'in_review', 'interview', 'offer'];
+    protected $fillable = ['id_user', 'id_vacancy', 'resume', 'verified', 'website', 'linkedin', 'github', 'facebook', 'twitter', 'recommendation', 'in_review', 'interview', 'offer'];
 
     public function applicants()
     {

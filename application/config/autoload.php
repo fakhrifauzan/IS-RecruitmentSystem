@@ -134,13 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
 	'M_User',
-	'M_Artikel',
-	'M_Gudang',
-	'M_Barang',
-	'M_Pengujian',
-	'M_Catatan',
-	'M_Harga',
-	'M_Komoditi',
-	'M_Komoditi_Harga',
-	'M_Resi'
+	'M_Submission',
+	'M_Vacancy'
 );

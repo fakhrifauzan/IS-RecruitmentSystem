@@ -13,23 +13,20 @@ class Auth extends CI_Controller {
         if (!$this->session->has_userdata('logged_in')) {
             $this->load->view('auth/login'); 
         } else {
-            if ($this->session->userdata('role') == 0) {
-                redirect('admin/dashboard');
-            } elseif ($this->session->userdata('role') == 1) {
-                redirect('pengelola/dashboard');
-            } elseif ($this->session->userdata('role') == 2) {
-                redirect('dinas/dashboard');
+            if ($this->session->userdata('role') == 0) { // Applicants
+                redirect('applicants/dashboard');
+            } elseif ($this->session->userdata('role') == 1) { // Employee
+                redirect('employee/dashboard');
+            } elseif ($this->session->userdata('role') == 2) { // Manager
+                redirect('manager/dashboard');
             } else {
-                redirect('petani/dashboard');
+                redirect('executive/dashboard');
             }
         }        
 	}
 
     public function login()
     {
-        // $username = 'fakhrifauzan';
-        // $password = 'password';
-
         $username = $this->input->post('username');
         $password = md5($this->input->post('password'));
 
@@ -43,25 +40,25 @@ class Auth extends CI_Controller {
         } else {
             $session_data = array(
                 'id'        => $user->id,
-                'nama'      => $user->nama,
+                'username'  => $user->username,
+                'first_name'=> $user->first_name,
+                'last_name' => $user->last_name,
+                'location'  => $user->location,
                 'email'     => $user->email,
-                'jabatan'   => $user->jabatan,
+                'phone'     => $user->phone,
                 'role'      => $user->role,
-                'tmpt_lahir'=> $user->tmpt_lahir,
-                'tgl_lahir' => $user->tgl_lahir,
-                'alamat'    => $user->alamat,
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($session_data);
 
-            if ($this->session->userdata('role') == 0) {
-                redirect('admin/dashboard');
-            } elseif ($this->session->userdata('role') == 1) {
-                redirect('pengelola/dashboard');
-            } elseif ($this->session->userdata('role') == 2) {
-                redirect('dinas/dashboard');
+            if ($this->session->userdata('role') == 0) { // Applicants
+                redirect('applicants/dashboard');
+            } elseif ($this->session->userdata('role') == 1) { // Employee
+                redirect('employee/dashboard');
+            } elseif ($this->session->userdata('role') == 2) { // Manager
+                redirect('manager/dashboard');
             } else {
-                redirect('petani/dashboard');
+                redirect('executive/dashboard');
             }
         }
     }
@@ -70,10 +67,5 @@ class Auth extends CI_Controller {
     {
         $this->session->sess_destroy();
         redirect(base_url());       
-    }
-
-    public function cek_id()
-    {
-        echo $this->session->id;
     }
 }

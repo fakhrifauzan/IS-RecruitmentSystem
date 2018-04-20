@@ -48,4 +48,17 @@ class Submission extends CI_Controller {
     {
         // 
     }
+
+    public function setOffer($id)
+    {
+        $submission = M_Submission::find($id);
+        if ($submission->interview == 1) {
+            $submission->offer = 1;
+            $submission->save();
+            $this->session->set_flashdata('sukses', 'Submission Berhasil Disimpan');
+        } else {
+            $this->session->set_flashdata('gagal', 'Submission Tidak Berhasil Disimpan');
+        }
+        redirect('manager/submission');
+    }
 }

@@ -20,6 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['vacancy'] = M_Vacancy::where('status', 1)->get();
+		$this->load->view('layouts/app', $data);
 	}
 }

@@ -74,15 +74,15 @@ class Vacancy extends CI_Controller {
         if(!$data['vacancy']) {
             redirect('manager/vacancy');
         }
-        $data['sidebar'] = 'admin/sidebar';
-        $data['content'] = 'admin/vacancy_edit';
+        $data['sidebar'] = 'manager/sidebar';
+        $data['content'] = 'manager/vacancy_edit';
         $this->load->view('layouts/app', $data);
     }
 
     public function update()
     {
         if (!$this->input->post()) {
-            redirect('admin/vacancy');
+            redirect('manager/vacancy');
         } else {
             $this->form_validation->set_rules('title', 'Vacancy Title', 'required|min_length[5]');
             $this->form_validation->set_rules('job_desc', 'Job Description', 'required');
@@ -122,6 +122,6 @@ class Vacancy extends CI_Controller {
         } else {
             $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
         }
-        redirect('admin/vacancy');
+        redirect('manager/vacancy');
     }
 }
