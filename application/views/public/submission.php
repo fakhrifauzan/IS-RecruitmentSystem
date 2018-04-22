@@ -16,6 +16,7 @@
                   <div class="tab-content">
                       <div class="tab-pane" id="personal">
                           <h5 class="text-center">Ceritakan tentang dirimu.</h5>
+                          <?php echo validation_errors(); ?>
                           <div class="row">
                               <div class="col-md-5 col-md-offset-1">
                                   <div class="form-group">
@@ -27,6 +28,7 @@
                                              name="first_name"
                                              required="true"
                                              placeholder="ex: Mike"
+                                             value="<?php echo set_value('first_name'); ?>"
                                       />
                                   </div>
                               </div>
@@ -39,12 +41,24 @@
                                              type="text"
                                              name="last_name"
                                              placeholder="ex: Andrew"
+                                             value="<?php echo set_value('last_name'); ?>"
                                       />
                                   </div>
                               </div>
                           </div>
                           <div class="row">
-                              <div class="col-md-10 col-md-offset-1">
+                              <div class="col-md-5 col-md-offset-1">
+                                  <div class="form-group">
+                                      <label class="control-label">
+                                          Jenis Kelamin<star>*</star>
+                                      </label>
+                                      <select name="gender" class="selectpicker" data-style="btn btn-default" title="Pilih Jenis Kelamin" data-size="7" required>
+                                          <option value="Male" <?php echo set_select('gender', 'Male'); ?>>Laki-Laki</option>
+                                          <option value="Female" <?php echo set_select('gender', 'Female'); ?>>Perempuan</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-md-5">
                                   <div class="form-group">
                                       <label class="control-label">
                                           Lokasi<star>*</star>
@@ -54,6 +68,7 @@
                                              name="location"
                                              required="true"
                                              placeholder="Bandung, West java"
+                                             value="<?php echo set_value('location'); ?>"
                                       />
                                   </div>
                               </div>
@@ -70,6 +85,7 @@
                                              email="true"
                                              required="true"
                                              placeholder="ex: hello@fazan.my.id"
+                                             value="<?php echo set_value('email'); ?>"
                                       />
                                   </div>
                               </div>
@@ -85,6 +101,7 @@
                                              name="phone"
                                              required="true"
                                              placeholder="08567018044"
+                                             value="<?php echo set_value('phone'); ?>"
                                       />
                                   </div>
                               </div>
@@ -101,6 +118,7 @@
                                              name="website"
                                              url="true"
                                              placeholder="ex: https://fazan.my.id"
+                                             value="<?php echo set_value('website'); ?>"
                                       />
                                   </div>
                               </div>
@@ -113,6 +131,7 @@
                                              type="text"
                                              name="linkedin"
                                              placeholder="ex: https://www.linkedin.com/in/fakhrifauzan"
+                                             value="<?php echo set_value('linkedin'); ?>"
                                       />
                                   </div>
                               </div>
@@ -123,6 +142,7 @@
                                              type="text"
                                              name="github"
                                              placeholder="ex: https://github.com/fakhrifauzan"
+                                             value="<?php echo set_value('github'); ?>"
                                       />
                                   </div>
                               </div>
@@ -135,6 +155,7 @@
                                              type="text"
                                              name="facebook"
                                              placeholder="ex: https://www.facebook.com/fazan697"
+                                             value="<?php echo set_value('facebook'); ?>"
                                       />
                                   </div>
                               </div>
@@ -145,6 +166,7 @@
                                              type="text"
                                              name="twitter"
                                              placeholder="ex: https://twitter.com/fakhrifauzan"
+                                             value="<?php echo set_value('twitter'); ?>"
                                       />
                                   </div>
                               </div>
@@ -157,6 +179,7 @@
                                              type="file"
                                              name="resume"
                                              required="true"
+                                             value="<?php echo set_value('resume'); ?>"
                                       />
                                   </div>
                               </div>
@@ -171,7 +194,7 @@
                                           1. Bagaimana biasanya kamu menyalurkan energi?<star>*</star>
                                       </label>
                                       <div class="radio">
-                                        <input type="radio" name="energi" id="energi1" value="E">
+                                        <input type="radio" name="energi" id="energi1" value="E" <?php echo set_radio('energi', 'E'); ?>>
                                         <label for="energi1">
                                           Extroversion
                                         </label>
@@ -180,7 +203,7 @@
                                           <p>Kamu menyalurkan energimu dengan bersemangat, antusias, suka mengobrol, senang berinteraksi dengan orang lain, pandai merangkai kata, dan lebih menyukai tatap muka langsung.</p>
                                       </div>
                                       <div class="radio">
-                                        <input type="radio" name="energi" id="energi2" value="I">
+                                        <input type="radio" name="energi" id="energi2" value="I" <?php echo set_radio('energi', 'I'); ?>>
                                         <label for="energi2">
                                           Introversion
                                         </label>
@@ -198,7 +221,7 @@
                                           2. Bagaimana biasanya kamu memporoses informasi?<star>*</star>
                                       </label>
                                       <div class="radio">
-                                        <input type="radio" name="informasi" id="informasi1" value="S">
+                                        <input type="radio" name="informasi" id="informasi1" value="S" <?php echo set_radio('informasi', 'S'); ?>>
                                         <label for="informasi1">
                                           Sensing
                                         </label>
@@ -207,7 +230,7 @@
                                           <p>Kamu memecahkan masalah dengan mengikuti metode yang telah ada, praktis, memerhatikan fakta-fakta, menyukai rutinitas ketimbang spontanitas, bertindak hati-hati, dan penuh perhitungan.</p>
                                       </div>
                                       <div class="radio">
-                                        <input type="radio" name="informasi" id="informasi2" value="N">
+                                        <input type="radio" name="informasi" id="informasi2" value="N" <?php echo set_radio('informasi', 'N'); ?>>
                                         <label for="informasi2">
                                           Intuition
                                         </label>
@@ -225,7 +248,7 @@
                                           3. Bagaimana biasanya kamu membuat keputusan?<star>*</star>
                                       </label>
                                       <div class="radio">
-                                        <input type="radio" name="keputusan" id="keputusan1" value="T">
+                                        <input type="radio" name="keputusan" id="keputusan1" value="T" <?php echo set_radio('keputusan', 'T'); ?>>
                                         <label for="keputusan1">
                                           Thinking
                                         </label>
@@ -234,7 +257,7 @@
                                           <p>Kamu menyukai sesuatu yang singkat dan padat, mempertimbangkan pro dan kontra dengan baik, kritis, objektif, dapat diyakinkan melalui penjelasan yang logis, menggunakn emosi dan perasaan sebagai pertimbangan kedua. </p>
                                       </div>
                                       <div class="radio">
-                                        <input type="radio" name="keputusan" id="keputusan2" value="F">
+                                        <input type="radio" name="keputusan" id="keputusan2" value="F" <?php echo set_radio('keputusan', 'F'); ?>>
                                         <label for="keputusan2">
                                           Feeling
                                         </label>
@@ -252,7 +275,7 @@
                                           4. Bagaiman kamu mengatur hidup?<star>*</star>
                                       </label>
                                       <div class="radio">
-                                        <input type="radio" name="hidup" id="hidup1" value="J">
+                                        <input type="radio" name="hidup" id="hidup1" value="J" <?php echo set_radio('hidup', 'J'); ?>>
                                         <label for="hidup1">
                                           Judging
                                         </label>
@@ -261,7 +284,7 @@
                                           <p>Senang membuat kesepakatan, target, dan batas waktu. Tidak suka dengan hal-hal mendadak, mengharapkan orang lain patuh dengan jadwal, berperndirian tetap, fokus pada arah dan tujuan.</p>
                                       </div>
                                       <div class="radio">
-                                        <input type="radio" name="hidup" id="hidup2" value="P">
+                                        <input type="radio" name="hidup" id="hidup2" value="P" <?php echo set_radio('hidup', 'P'); ?>>
                                         <label for="hidup2">
                                           Perceiving
                                         </label>
@@ -292,6 +315,7 @@
                                              name="username"
                                              required="true"
                                              placeholder="ex: fakhrifauzan"
+                                             value="<?php echo set_value('username'); ?>"
                                       />
                                   </div>
                               </div>

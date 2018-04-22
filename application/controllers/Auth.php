@@ -39,6 +39,7 @@ class Auth extends CI_Controller {
             $this->session->set_flashdata('message', 'Username / Password salah!');
             redirect(base_url());
         } else {
+            $role = ['Applicants', 'Employee', 'Manager', 'Executive'];
             $session_data = array(
                 'id'        => $user->id,
                 'username'  => $user->username,
@@ -48,6 +49,7 @@ class Auth extends CI_Controller {
                 'email'     => $user->email,
                 'phone'     => $user->phone,
                 'role'      => $user->role,
+                'role_name' => $role[$user->role],
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($session_data);

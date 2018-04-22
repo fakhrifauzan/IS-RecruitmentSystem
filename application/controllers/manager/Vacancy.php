@@ -18,6 +18,8 @@ class Vacancy extends CI_Controller {
 
 	public function create()
     {
+        $data['data'] = M_location::all();
+        // dd($data['data']);
         $data['sidebar'] = 'manager/sidebar';
         $data['content'] = 'manager/vacancy_create';
         $this->load->view('layouts/app', $data);
@@ -28,21 +30,21 @@ class Vacancy extends CI_Controller {
         if (!$this->input->post()) {
             redirect('manager/vacancy');
         } else {
-            $this->form_validation->set_rules('title', 'Vacancy Title', 'required|min_length[5]');
-            $this->form_validation->set_rules('job_desc', 'Job Description', 'required');
-            $this->form_validation->set_rules('qualifications', 'Qualifications', 'required');
-            $this->form_validation->set_rules('location', 'Location', 'required');
-            $this->form_validation->set_rules('type', 'Vacancy Type', 'required');
-            $this->form_validation->set_rules('status', 'Vacancy Status', 'required');
+            $this->form_validation->set_rules('title', 'Judul Lowongan', 'required|min_length[5]');
+            $this->form_validation->set_rules('job_desc', 'Deskripsi Pekerjaan', 'required');
+            $this->form_validation->set_rules('qualifications', 'Kualifikasi', 'required');
+            $this->form_validation->set_rules('location_id', 'Lokasi', 'required');
+            $this->form_validation->set_rules('type', 'Tipe Lowongan', 'required');
+            $this->form_validation->set_rules('status', 'Status Lowongan', 'required');
 
             if ($this->form_validation->run() == FALSE) {
-                redirect('manager/vacancy/create');
+                $this->create();
             } else {
                 $vacancy = M_Vacancy::create([
                     'title' => $this->input->post('title'),
                     'job_desc' => $this->input->post('job_desc'),
                     'qualifications' => $this->input->post('qualifications'),
-                    'location' => $this->input->post('location'),
+                    'location_id' => $this->input->post('location_id'),
                     'additional' => empty($this->input->post('additional')) ? NULL : $this->input->post('additional'),
                     'type' => $this->input->post('type'),
                     'status' => $this->input->post('status'),
@@ -70,6 +72,7 @@ class Vacancy extends CI_Controller {
 
     public function edit($id)
     {
+        $data['data'] = M_location::all();
         $data['vacancy'] = M_Vacancy::find($id);
         if(!$data['vacancy']) {
             redirect('manager/vacancy');
@@ -87,7 +90,7 @@ class Vacancy extends CI_Controller {
             $this->form_validation->set_rules('title', 'Vacancy Title', 'required|min_length[5]');
             $this->form_validation->set_rules('job_desc', 'Job Description', 'required');
             $this->form_validation->set_rules('qualifications', 'Qualifications', 'required');
-            $this->form_validation->set_rules('location', 'Location', 'required');
+            $this->form_validation->set_rules('location_id', 'Location', 'required');
             $this->form_validation->set_rules('type', 'Vacancy Type', 'required');
             $this->form_validation->set_rules('status', 'Vacancy Status', 'required');
 
@@ -99,7 +102,7 @@ class Vacancy extends CI_Controller {
                 $vacancy->job_desc = $this->input->post('job_desc');
                 $vacancy->qualifications = $this->input->post('qualifications');
                 $vacancy->additional = empty($this->input->post('additional')) ? NULL : $this->input->post('additional');
-                $vacancy->location = $this->input->post('location');
+                $vacancy->location_id = $this->input->post('location_id');
                 $vacancy->type = $this->input->post('type');
                 $vacancy->status = $this->input->post('status');
                 $vacancy->save();
@@ -116,12 +119,29 @@ class Vacancy extends CI_Controller {
 
     public function destroy($id)
     {
-        $vacancy = M_Vacancy::destroy($id);
-        if($vacancy) {
-            $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
+        $vacancy = M_Vacancy::find($id);
+        if($vacancy->created_by == $this->session->id) {
+            if ($vacancy->submission->count() == 0) {
+                $vacancy->delete();
+                $this->session->set_flashdata('sukses', 'Artikel Berhasil Dihapus');
+            }
         } else {
             $this->session->set_flashdata('gagal', 'Artikel Tidak Berhasil Dihapus');
         }
         redirect('manager/vacancy');
+    }
+
+    public function changeStatus($id)
+    {
+        $vacancy = M_Vacancy::find($id);
+        if ($vacancy->created_by == $this->session->id) {
+            if ($vacancy->status == 1) {
+                $vacancy->status = 0;
+            } else {
+                $vacancy->status = 1;
+            }
+            $vacancy->save();
+        }
+        redirect('manager/vacancy');        
     }
 }

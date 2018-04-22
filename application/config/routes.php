@@ -62,6 +62,7 @@ $route['logout'] = 'Auth/logout';
 $route['vacancy/(:any)'] = 'landing/show/$1';
 $route['vacancy/(:any)/submit'] = 'submission/create/$1';
 $route['submission/submit'] = 'submission/store';
+$route['applicants/(:any)/profile'] = 'submission/profile/$1';
 
 //APPLICANTS
 $route['applicants'] = 'akun/dashboard';
@@ -83,16 +84,17 @@ $route['manager/submission'] = 'manager/submission/index';
 $route['manager/submission/(:any)'] = 'manager/submission/show/$1';
 $route['manager/submission/(:any)/setOffer'] = 'manager/submission/setOffer/$1';
 $route['manager/vacancy'] = 'manager/vacancy/index';
-$route['manager/vacancy/(:any)'] = 'manager/vacancy/show/$1';
 $route['manager/vacancy/create'] = 'manager/vacancy/create';
 $route['manager/vacancy/store'] = 'manager/vacancy/store';
-$route['manager/vacancy/edit/(:any)'] = 'manager/vacancy/edit/$1';
 $route['manager/vacancy/update'] = 'manager/vacancy/update';
-$route['manager/vacancy/delete/(:any)'] = 'manager/vacancy/destroy/$1';
+$route['manager/vacancy/(:any)/edit'] = 'manager/vacancy/edit/$1';
+$route['manager/vacancy/(:any)/delete'] = 'manager/vacancy/destroy/$1';
+$route['manager/vacancy/(:any)/changeStatus'] = 'manager/vacancy/changeStatus/$1';
+$route['manager/vacancy/(:any)'] = 'manager/vacancy/show/$1';
 
 //EXECUTIVE
-$route['employee'] = 'akun/dashboard';
-$route['employee/dashboard'] = 'akun/dashboard';
+$route['executive'] = 'akun/dashboard';
+$route['executive/dashboard'] = 'akun/dashboard';
 
 //AJAX API
 $route['ajax/dataJagung'] = 'ajaxapi/getdatajagung';

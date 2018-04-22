@@ -23,12 +23,12 @@
 	    	<div class="sidebar-wrapper">
 				<div class="user">
 	                <div class="photo">
-	                    <img src="<?php echo base_url(); ?>assets/img/faces/face-2.jpg" />
+	                    <img src="<?php echo base_url(); ?>assets/img/avatar.png" />
 	                </div>
 	                <div class="info">
 						<a data-toggle="collapse" href="#" class="collapsed">
 	                        <span>
-								Chet Faker
+								<?php echo $this->session->first_name.' '.$this->session->last_name ?>
 							</span>
 	                    </a>
 						<div class="clearfix"></div>

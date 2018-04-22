@@ -29,7 +29,8 @@
                                 <td><?php echo $submission->applicants->first_name ?></td>
                                 <td><?php echo $submission->vacancy->title ?></td>
                                 <td>
-                                	<a href="<?php echo base_url('assets/resume/').$submission->resume ?>" class="btn btn-default"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                	<a href="<?php echo base_url('applicants/').$submission->id_submission.'/profile' ?>" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                    <a href="<?php echo base_url('assets/resume/').$submission->resume ?>" class="btn btn-default"><i class="fa fa-download" aria-hidden="true"></i></a>
                                 </td>
                                 <td>
                                 	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setVerified' ?>" class="btn btn-<?php if($submission->verified == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->verified == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>

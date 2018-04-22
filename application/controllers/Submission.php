@@ -26,21 +26,25 @@ class Submission extends CI_Controller {
             redirect(base_url());
         } else {
             //PROFILE
-            $this->form_validation->set_rules('username', 'Nama Pengguna', 'required');
+            $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]',
+            array(
+                'is_unique'     => 'Username tidak tersedia.'
+            ));
             $this->form_validation->set_rules('password', 'Kata Sandi', 'required');
             $this->form_validation->set_rules('first_name', 'Nama Depan', 'required');
-            $this->form_validation->set_rules('last_name', 'Nama Belakang', 'required');
+            // $this->form_validation->set_rules('last_name', 'Nama Belakang', 'required');
+            $this->form_validation->set_rules('gender', 'Jenis Kelamin', 'required');
             $this->form_validation->set_rules('location', 'Lokasi', 'required');
             $this->form_validation->set_rules('email', 'Surat Elektronik', 'required');
             $this->form_validation->set_rules('phone', 'Nomor Telepon', 'required');
 
             //SUBMISSION
             $this->form_validation->set_rules('id_vacancy', 'ID Lowongan', 'required');
-            $this->form_validation->set_rules('website', 'Situs Web', '');
-            $this->form_validation->set_rules('linkedin', 'Profil LinkedIn', '');
-            $this->form_validation->set_rules('github', 'Profil Github', '');
-            $this->form_validation->set_rules('facebook', 'Facebook', '');
-            $this->form_validation->set_rules('twitter', 'Twiter', '');
+            // $this->form_validation->set_rules('website', 'Situs Web', 'required');
+            // $this->form_validation->set_rules('linkedin', 'Profil LinkedIn', 'required');
+            // $this->form_validation->set_rules('github', 'Profil Github', 'required');
+            // $this->form_validation->set_rules('facebook', 'Facebook', 'required');
+            // $this->form_validation->set_rules('twitter', 'Twiter', 'required');
 
             //RECOMMENDER SYSTEM
             $this->form_validation->set_rules('energi', 'Profil LinkedIn', 'required');
@@ -49,13 +53,15 @@ class Submission extends CI_Controller {
             $this->form_validation->set_rules('hidup', 'Twiter', 'required');
 
             if ($this->form_validation->run() == FALSE) {
-                dd(validation_errors());
+                // dd(validation_errors());
+                $this->create($this->input->post('id_vacancy'));
             } else {
                 $user = M_User::create([
                     'username' => $this->input->post('username'),
                     'password' => md5($this->input->post('password')),
                     'first_name' => strtoupper($this->input->post('first_name')),
                     'last_name' => empty($this->input->post('last_name')) ? NULL : strtoupper($this->input->post('last_name')),
+                    'gender' => $this->input->post('gender'),
                     'location' => $this->input->post('location'),
                     'email' => $this->input->post('email'),
                     'phone' => $this->input->post('phone'),
@@ -87,7 +93,7 @@ class Submission extends CI_Controller {
                 $submission = M_Submission::create([
                     'id_user' => $user->id,
                     'id_vacancy' => $this->input->post('id_vacancy'),
-                    'resume' => '['.$this->input->post('id_vacancy').']_RESUME_'.$user->id.$this->upload->data('file_ext'),
+                    'resume' => $this->input->post('id_vacancy').'_RESUME_'.$user->id.$this->upload->data('file_ext'),
                     'verified' => 0,
                     'website' => empty($this->input->post('website')) ? NULL : $this->input->post('website'),
                     'linkedin' => empty($this->input->post('linkedin')) ? NULL : $this->input->post('linkedin'),
@@ -130,6 +136,20 @@ class Submission extends CI_Controller {
     public function destroy($id)
     {
         // 
+    }
+
+    public function profile($id)
+    {
+        $data['data'] = M_Submission::where('id_submission', $id)->get()->first();
+        // dd($data['data']);
+        if ($this->session->userdata('role') == 1) { // Applicants
+            $data['sidebar'] = 'employee/sidebar';
+            $data['content'] = 'public/profile';
+        } elseif ($this->session->userdata('role') == 2) { // Employee
+            $data['sidebar'] = 'manager/sidebar';
+            $data['content'] = 'public/profile';
+        }
+        $this->load->view('layouts/app', $data); 
     }
 
     public function getRecommendation($data)

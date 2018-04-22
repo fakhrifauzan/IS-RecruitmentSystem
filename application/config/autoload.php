@@ -103,7 +103,7 @@ $autoload['helper'] = array('form', 'url', 'html');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -135,5 +135,6 @@ $autoload['language'] = array();
 $autoload['model'] = array(
 	'M_User',
 	'M_Submission',
-	'M_Vacancy'
+	'M_Vacancy',
+	'M_Location'
 );

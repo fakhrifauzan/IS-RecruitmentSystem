@@ -6,40 +6,36 @@
 
         <div class="card">
             <div class="card-content">
-                <div class="toolbar">
+                <div class="toolbar text-center">
                     <!--Here you can write extra buttons/actions for the toolbar-->
+                    <a href="<?php echo base_url('manager/vacancy/create') ?>" class="btn btn-info btn-fill btn-wd btn-lg">Tambah Lowongan</a>
                 </div>
                 <div class="fresh-datatables">
 					<table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Job Position</th>
-							<th>Resume</th>
-							<th>Verifikasi</th>
-							<th>Rekomendasi</th>
-							<th>In Review</th>
-							<th>Interview</th>
+                            <th>Judul</th>
+							<th>Lokasi</th>
+							<th>Tipe</th>
+							<th>Status</th>
+							<th>Dibuat Oleh</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-						foreach ($data as $submission): ?>
+						foreach ($data as $vacancy): ?>
                             <tr>
-                                <td><?php echo $submission->applicants->first_name ?></td>
-                                <td><?php echo $submission->vacancy->title ?></td>
+                                <td><?php echo $vacancy->title ?></td>
+                                <td><?php echo $vacancy->location->city ?></td>
+                                <td><?php echo $vacancy->type ?></td>
                                 <td>
-                                	<a href="<?php echo base_url('assets/resume/').$submission->resume ?>" class="btn btn-default"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                    <a href="<?php echo base_url('manager/vacancy/').$vacancy->id_vacancy.'/changeStatus' ?>" class="btn btn-<?php if($vacancy->status == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($vacancy->status == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
                                 </td>
+                                <td><?php echo $vacancy->manager->first_name ?> <?php echo $vacancy->manager->last_name ?></td>
                                 <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setVerified' ?>" class="btn btn-<?php if($submission->verified == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->verified == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
-                                </td>
-                                <td><?php echo $submission->recommendation ?></td>
-                                <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setInReview' ?>" class="btn btn-<?php if($submission->in_review == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->in_review == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
-                                </td>
-                                <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setInterview' ?>" class="btn btn-<?php if($submission->interview == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->interview == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
+                                    <a href="<?php echo base_url('manager/vacancy/').$vacancy->id_vacancy.'/edit' ?>" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="<?php echo base_url('manager/vacancy/').$vacancy->id_vacancy.'/delete' ?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ;?>

@@ -10,7 +10,7 @@ class Submission extends CI_Controller {
 
 	public function index()
 	{
-        $data['data'] = M_Submission::all();
+        $data['data'] = M_Submission::where('verified', 1)->get();
         $data['sidebar'] = 'manager/sidebar';
         $data['content'] = 'manager/submission';
         $this->load->view('layouts/app', $data); 
@@ -53,7 +53,11 @@ class Submission extends CI_Controller {
     {
         $submission = M_Submission::find($id);
         if ($submission->interview == 1) {
-            $submission->offer = 1;
+            if ($submission->offer == 1) {
+                $submission->offer = 0;
+            } else {
+                $submission->offer = 1;
+            }
             $submission->save();
             $this->session->set_flashdata('sukses', 'Submission Berhasil Disimpan');
         } else {

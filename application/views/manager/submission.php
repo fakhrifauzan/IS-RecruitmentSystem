@@ -19,7 +19,8 @@
 							<th>Verifikasi</th>
 							<th>Rekomendasi</th>
 							<th>In Review</th>
-							<th>Interview</th>
+                            <th>Interview</th>
+							<th>Offer</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,17 +30,21 @@
                                 <td><?php echo $submission->applicants->first_name ?></td>
                                 <td><?php echo $submission->vacancy->title ?></td>
                                 <td>
-                                	<a href="<?php echo base_url('assets/resume/').$submission->resume ?>" class="btn btn-default"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                	<a href="<?php echo base_url('applicants/').$submission->id_submission.'/profile' ?>" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                    <a href="<?php echo base_url('assets/resume/').$submission->resume ?>" class="btn btn-default"><i class="fa fa-download" aria-hidden="true"></i></a>
                                 </td>
                                 <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setVerified' ?>" class="btn btn-<?php if($submission->verified == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->verified == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
+                                    <button class="btn btn-<?php if($submission->verified == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->verified == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></button>
                                 </td>
                                 <td><?php echo $submission->recommendation ?></td>
                                 <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setInReview' ?>" class="btn btn-<?php if($submission->in_review == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->in_review == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
+                                	<button class="btn btn-<?php if($submission->in_review == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->in_review == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></button>
                                 </td>
                                 <td>
-                                	<a href="<?php echo base_url('employee/submission/').$submission->id_submission.'/setInterview' ?>" class="btn btn-<?php if($submission->interview == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->interview == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
+                                	<button class="btn btn-<?php if($submission->interview == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->interview == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></button>
+                                </td>
+                                <td>
+                                    <a href="<?php echo base_url('manager/submission/').$submission->id_submission.'/setOffer' ?>" class="btn btn-<?php if($submission->offer == 0){ echo 'danger';} else { echo 'success';} ?>"><i class="fa fa-<?php if($submission->offer == 0){ echo 'times';} else { echo 'check';} ?>" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ;?>

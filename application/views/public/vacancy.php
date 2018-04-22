@@ -54,7 +54,7 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2><?php echo $vacancy->title; ?></h2>
-                            <h5><b><?php echo $vacancy->location; ?></b>, <?php echo $vacancy->type; ?></h5>
+                            <h5><b><?php echo $vacancy->location->city; ?></b>, <?php echo $vacancy->type; ?></h5>
                             <br>
                             <br>
                             <h5><b>Deskripsi Pekerjaan</b></h5>

@@ -78,7 +78,7 @@
                         <div class="col-md-4 column">
                             <h4><?php echo $vacancy->title; ?></h4>
                             <p><?php echo $vacancy->job_desc; ?></p>
-                            <a class="btn btn-danger btn-simple" href="<?php echo base_url('vacancy/'.$vacancy->id_vacancy); ?>">See more <i class="fa fa-chevron-right"></i></a>
+                            <a class="btn btn-danger btn-simple" href="<?php echo base_url('vacancy/'.$vacancy->id_vacancy); ?>">Lihat Selengkapnya <i class="fa fa-chevron-right"></i></a>
                         </div>
                     <?php endforeach ;?>
                 </div>
