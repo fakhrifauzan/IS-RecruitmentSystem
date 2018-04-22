@@ -13,7 +13,7 @@ class M_User extends Eloquent
     // const CREATED_AT = 'created_at';
     // const UPDATED_AT = 'updated_at';
 
-    protected $fillable = ['username', 'password', 'first_name', 'last_name', 'location', 'email', 'phone', 'role'];
+    protected $fillable = ['username', 'password', 'first_name', 'last_name', 'gender', 'location', 'email', 'phone', 'role'];
 
     public function submission()
     {

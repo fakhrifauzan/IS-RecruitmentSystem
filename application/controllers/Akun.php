@@ -18,9 +18,10 @@ class Akun extends CI_Controller {
 
 	public function dashboard()
     {
-        
         if ($this->session->role == 0) {
-            // $data['sidebar'] = 'admin/sidebar';
+            $data['data'] = M_Submission::where('id_user', $this->session->id)->get()->first();
+            $data['sidebar'] = 'applicants/sidebar';
+            $data['content'] = 'applicants/dashboard';
         } else {
             if ($this->session->role == 1) {
                 $data['sidebar'] = 'employee/sidebar';
