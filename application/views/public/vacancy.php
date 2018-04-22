@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
+    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/kit/assets/paper_img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     
     <title>Sistem Rekruitasi Pegawai</title>

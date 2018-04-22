@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
+	<link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/kit/assets/paper_img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<title>Sistem Rekruitasi Pegawai</title>
@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2>PT. AT10TION</h2>
-                            <h5>Keluarga Besar.</h5>
+                            <h5>JL. Bojongsoang Raya, Pesona Bali B8 No.3 Bojongsoang 40288 Bandung, Indonesia</h5>
                         </div>
                     </div>
                 </div>
