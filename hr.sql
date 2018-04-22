@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2018 at 06:36 PM
+-- Generation Time: Apr 22, 2018 at 06:41 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `recruitment`
+-- Database: `hr`
 --
 
 -- --------------------------------------------------------
@@ -443,7 +443,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `g
 (13, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Tika', NULL, 'Male', 'admin@fazan.my.id', 'Bandung', '08567018044', 1, '2018-04-22 16:32:44', '0000-00-00 00:00:00'),
 (14, 'manager', '1d0258c2440a8d19e716292b231e3190', 'Budi', NULL, 'Male', 'manager@gmail.com', 'Tangerang Selatan', '123456', 2, '2018-04-22 16:32:25', '0000-00-00 00:00:00'),
 (15, 'executive', '3250d1e21c4281d3cd9479f5685770b6', 'Andra', NULL, 'Male', 'executive@ymail.com', 'Yogyakarta', '12398998', 3, '2018-04-22 16:32:34', '0000-00-00 00:00:00'),
-(16, 'demo', '5f4dcc3b5aa765d61d8327deb882cf99', 'DEMO123', NULL, 'Female', 'halo@gmail.com', 'Tangerang Selatan', '231313123', 0, '2018-04-22 15:25:06', '2018-04-22 15:01:23');
+(16, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'DEMO123', NULL, 'Female', 'halo@gmail.com', 'Tangerang Selatan', '231313123', 0, '2018-04-22 16:40:57', '2018-04-22 15:01:23');
 
 -- --------------------------------------------------------
 
