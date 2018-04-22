@@ -113,3 +113,28 @@
     });
 </script>
 
+<script type="text/javascript">
+    $.ajax({
+        url: "<?php echo base_url('ajaxAPI/getDataGender'); ?>",
+        dataType: "json",
+        success: function(data)
+        {
+            var data = {
+              // labels: data.labels,
+              series: data.series
+            };
+
+            var sum = function(a, b) { return a + b };
+
+            var setting = {
+                fullWidth: true,
+                height: "250px",
+                labelInterpolationFnc: function(value) {
+                    return Math.round(value / data.series.reduce(sum) * 100) + '%';
+                }
+            };
+            var chart = new Chartist.Pie('#genderChart', data, setting);
+        }
+    });
+</script>
+

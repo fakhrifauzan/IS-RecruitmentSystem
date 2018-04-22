@@ -11,8 +11,8 @@ class Submission extends CI_Controller {
 	public function index()
 	{
         $data['data'] = M_Submission::all();
-        $data['sidebar'] = 'eksekutif/sidebar';
-        $data['content'] = 'eksekutif/submission';
+        $data['sidebar'] = 'executive/sidebar';
+        $data['content'] = 'executive/charts';
         $this->load->view('layouts/app', $data); 
 	}
 

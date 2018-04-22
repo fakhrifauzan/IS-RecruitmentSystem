@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class AjaxAPI extends CI_Controller {
 
 	public function __construct()
@@ -8,44 +10,13 @@ class AjaxAPI extends CI_Controller {
         parent::__construct();
     }
 
-	public function getDataBeras()
+    public function getDataGender()
     {
-        $data = M_Komoditi_Harga::where('id_komoditi', 1)->get();
+        $data = M_User::select('gender', DB::raw('count(*) as total'))->whereIn('id', M_Submission::select('id_user')->get())->groupBy('gender')->get();
+        // dd($series);
         $json = array(
-            // 'series' => array(
-			// 	'meta' => $data->pluck('tanggal'),
-			// 	'value' => $data->pluck('harga')
-			// ),
-			'labels' => $data->pluck('tanggal'),
-			'series' => $data->pluck('harga'),
-        );
-        echo json_encode($json);
-    }
-
-	public function getDataJagung()
-    {
-        $data = M_Komoditi_Harga::where('id_komoditi', 2)->get();
-        $json = array(
-            // 'series' => array(
-			// 	'meta' => $data->pluck('tanggal'),
-			// 	'value' => $data->pluck('harga')
-			// ),
-			'labels' => $data->pluck('tanggal'),
-			'series' => $data->pluck('harga'),
-        );
-        echo json_encode($json);
-    }
-
-	public function getDataGabah()
-    {
-        $data = M_Komoditi_Harga::where('id_komoditi', 3)->get();
-        $json = array(
-            // 'series' => array(
-			// 	'meta' => $data->pluck('tanggal'),
-			// 	'value' => $data->pluck('harga')
-			// ),
-			'labels' => $data->pluck('tanggal'),
-			'series' => $data->pluck('harga'),
+            'labels' => $data->pluck('gender'),
+            'series' => $data->pluck('total'),
         );
         echo json_encode($json);
     }

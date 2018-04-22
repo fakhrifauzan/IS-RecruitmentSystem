@@ -95,6 +95,7 @@ $route['manager/vacancy/(:any)'] = 'manager/vacancy/show/$1';
 //EXECUTIVE
 $route['executive'] = 'akun/dashboard';
 $route['executive/dashboard'] = 'akun/dashboard';
+$route['executive/charts'] = 'executive/submission/index';
 
 //AJAX API
 $route['ajax/dataJagung'] = 'ajaxapi/getdatajagung';
