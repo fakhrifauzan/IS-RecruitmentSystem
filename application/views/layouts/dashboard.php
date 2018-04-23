@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="icon-big icon-warning text-center">
-                            <i class="ti-user"></i>
+                            <i class="fa fa-group"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
@@ -23,7 +23,7 @@
             <div class="card-footer">
                 <hr />
                 <div class="stats">
-                    <i class="ti-timer"></i> Jumlah Seluruh Pelamar
+                    <i class="fa fa-group"></i> Jumlah Seluruh Pelamar
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="icon-big icon-success text-center">
-                            <i class="ti-user"></i>
+                            <i class="fa fa-group"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
@@ -48,7 +48,7 @@
             <div class="card-footer">
                 <hr />
                 <div class="stats">
-                    <i class="ti-calendar"></i> Jumlah Seluruh Pelamar Dengan Status "In Review"
+                    <i class="fa fa-calendar"></i> Jumlah Seluruh Pelamar Dengan Status "In Review"
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="icon-big icon-danger text-center">
-                            <i class="ti-user"></i>
+                            <i class="fa fa-group"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
@@ -73,7 +73,7 @@
             <div class="card-footer">
                 <hr />
                 <div class="stats">
-                    <i class="ti-timer"></i> Jumlah Seluruh Pelamar Dengan Status "Interview"
+                    <i class="fa fa-clock-o"></i> Jumlah Seluruh Pelamar Dengan Status "Interview"
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="icon-big icon-info text-center">
-                            <i class="ti-user"></i>
+                            <i class="fa fa-group"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
@@ -98,7 +98,7 @@
             <div class="card-footer">
                 <hr />
                 <div class="stats">
-                    <i class="ti-reload"></i> Jumlah Seluruh Pelamar Dengan Status "Offer"
+                    <i class="fa fa-refresh"></i> Jumlah Seluruh Pelamar Dengan Status "Offer"
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
                 <ul class="timeline">
 				    <li class="timeline-inverted">
 				        <div class="timeline-badge <?php if($data->verified == 1){ echo "success"; } else { echo "danger"; } ?>">
-						  	<i class="ti-<?php if($data->verified == 1){ echo "check"; } else { echo "close"; } ?>"></i>
+						  	<i class="fa fa-<?php if($data->verified == 1){ echo "check"; } else { echo "close"; } ?>"></i>
 					    </div>
 				    	<div class="timeline-panel">
 					        <div class="timeline-heading">
@@ -21,7 +21,7 @@
 				    </li>
 				    <li>
 				        <div class="timeline-badge <?php if($data->in_review == 1){ echo "success"; } else { echo "danger"; } ?>">
-						  	<i class="ti-<?php if($data->in_review == 1){ echo "check"; } else { echo "close"; } ?>"></i>
+						  	<i class="fa fa-<?php if($data->in_review == 1){ echo "check"; } else { echo "close"; } ?>"></i>
 					    </div>
 				    	<div class="timeline-panel">
 					        <div class="timeline-heading">
@@ -34,7 +34,7 @@
 				    </li>
 				    <li class="timeline-inverted">
 				    	<div class="timeline-badge <?php if($data->interview == 1){ echo "success"; } else { echo "danger"; } ?>">
-						  	<i class="ti-<?php if($data->interview == 1){ echo "check"; } else { echo "close"; } ?>"></i>
+						  	<i class="fa fa-<?php if($data->interview == 1){ echo "check"; } else { echo "close"; } ?>"></i>
 					    </div>
 				    	<div class="timeline-panel">
 					        <div class="timeline-heading">
@@ -44,7 +44,7 @@
 					</li>
                     <li>
 				        <div class="timeline-badge <?php if($data->offer == 1){ echo "success"; } else { echo "danger"; } ?>">
-						  	<i class="ti-<?php if($data->offer == 1){ echo "check"; } else { echo "close"; } ?>"></i>
+						  	<i class="fa fa-<?php if($data->offer == 1){ echo "check"; } else { echo "close"; } ?>"></i>
 					    </div>
 				    	<div class="timeline-panel">
 					        <div class="timeline-heading">

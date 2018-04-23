@@ -63,7 +63,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h2>PT. AT10TION</h2>
+                            <h2>PT. AT10TION INDONESIA</h2>
                             <h5>JL. Bojongsoang Raya, Pesona Bali B8 No.3 Bojongsoang 40288 Bandung, Indonesia</h5>
                         </div>
                     </div>
